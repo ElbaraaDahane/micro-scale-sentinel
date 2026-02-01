@@ -1,0 +1,29 @@
+system:
+  name: "Micro-Scale Sentinel"
+  version: "1.0.0"
+
+gemini:
+  model: "gemini-1.5-pro"
+  timeout_sec: 30
+  max_retries: 3
+
+preprocessing:
+  clahe:
+    clip_limit: 3.0
+    tile_grid_size: [8, 8]
+  bilateral:
+    d: 9
+    sigma_color: 75
+    sigma_space: 75
+
+feature_extraction:
+  scale_um_per_pixel: 0.5
+  min_particle_size_um: 50
+  max_particle_size_um: 5000
+
+classification:
+  confidence_threshold_high: 85
+  confidence_threshold_low: 60
+
+storage:
+  database_path: "data/database/sentinel.db"
